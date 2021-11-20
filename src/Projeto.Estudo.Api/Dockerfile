@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["ClearSale.Diego.Api/ClearSale.Diego.Api.csproj", "ClearSale.Diego.Api/"]
-RUN dotnet restore "ClearSale.Diego.Api/ClearSale.Diego.Api.csproj"
+COPY ["Projeto.Diego.Api/Projeto.Diego.Api.csproj", "Projeto.Diego.Api/"]
+RUN dotnet restore "Projeto.Diego.Api/Projeto.Diego.Api.csproj"
 COPY . .
-WORKDIR "/src/ClearSale.Diego.Api"
-RUN dotnet build "ClearSale.Diego.Api.csproj" -c Release -o /app/build
+WORKDIR "/src/Projeto.Diego.Api"
+RUN dotnet build "Projeto.Diego.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ClearSale.Diego.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "Projeto.Diego.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ClearSale.Diego.Api.dll"]
+ENTRYPOINT ["dotnet", "Projeto.Diego.Api.dll"]

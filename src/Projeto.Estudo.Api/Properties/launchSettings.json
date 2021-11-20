@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "ClearSale.Diego.Api": {
+    "Projeto.Diego.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

@@ -1,4 +1,4 @@
-namespace ClearSale.Diego.Api
+namespace Projeto.Diego.Api
 {
     public class WeatherForecast
     {

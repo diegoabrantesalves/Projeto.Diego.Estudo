@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ClearSale.Diego.Api.Controllers
+namespace Projeto.Diego.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
