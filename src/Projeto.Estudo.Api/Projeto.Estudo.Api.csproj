@@ -9,8 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Controllers\v3ntejzz.cac~" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Projeto.Estudo.Core\Projeto.Estudo.Core.csproj" />
+    <ProjectReference Include="..\Projeto.Estudo.Infra.CrossCutting.IoC\ClearSale.Estudo.Infra.CrossCutting.IoC.csproj" />
   </ItemGroup>
 
 </Project>
