@@ -36,8 +36,7 @@ namespace Projeto.Diego.Api.Controllers
         Summary = "Alteracão de Pedidos",
         Description = "Alteracão de pedidos",
         OperationId = "pedidos.Put",
-        Tags = new[] { "PedidosEndpoints" })
-    ]
+        Tags = new[] { "PedidosEndpoints" })]
         [HttpPost(Name = "Pedidos")]
         public async Task<IActionResult> PutAsync()
             => Ok(await _pedidoHandler.HandleAsync(new AlterarPedidoCommand()));
@@ -46,8 +45,7 @@ namespace Projeto.Diego.Api.Controllers
         Summary = "Lista de Pedidos",
         Description = "Lista de pedidos",
         OperationId = "pedidos.List",
-        Tags = new[] { "PedidosEndpoints" })
-        ]
+        Tags = new[] { "PedidosEndpoints" })]
         [HttpGet(Name = "Pedidos")]
         public async Task<IActionResult> GetAsync([FromRoute] long pedidoId)
             => Ok(await _pedidoRepository.GetAsync(pedidoId));        
@@ -56,7 +54,7 @@ namespace Projeto.Diego.Api.Controllers
        Summary = "Busca um pedido",
        Description = "Busca de um pedido",
        OperationId = "pedidos.Get",
-       Tags = new[] { "PedidosEndpoints" })       ]
+       Tags = new[] { "PedidosEndpoints" })]
         [HttpGet(Name = "Pedidos")]
         public async Task<IActionResult> GetAsync()
              => Ok(await _pedidoRepository.GetAllAsync());
