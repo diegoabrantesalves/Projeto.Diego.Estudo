@@ -1,24 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
+using Projeto.Estudo.Api.Controllers;
+using Projeto.Estudo.Api.ViewModels;
 using Projeto.Estudo.Core.Commands;
+using Projeto.Estudo.Core.Commands.Pedido;
 using Projeto.Estudo.Core.Entities;
 using Projeto.Estudo.Core.Handlers;
 using Projeto.Estudo.Core.Interfaces.Repository;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Projeto.Diego.Api.Controllers
-{
-    [ApiController]
-    [Route("[controller]")]
-    public class PedidosController : ControllerBase
+{   
+    public class PedidosController : BaseController
     {
-        private readonly ILogger<PedidosController> _logger;
         private readonly PedidoHandler _pedidoHandler;
         private readonly IPedidoRepository _pedidoRepository;
 
-        public PedidosController(ILogger<PedidosController> logger,
-            PedidoHandler pedidoHandler, IPedidoRepository pedidoRepository)
+        public PedidosController(PedidoHandler pedidoHandler, IPedidoRepository pedidoRepository)
         {
-            _logger = logger;
             _pedidoHandler = pedidoHandler;
             _pedidoRepository = pedidoRepository;
         }
@@ -28,35 +26,35 @@ namespace Projeto.Diego.Api.Controllers
         Description = "Cadastro de pedidos",
         OperationId = "pedidos.Post",
         Tags = new[] { "PedidosEndpoints" })]
-        [HttpPost(Name = "Pedidos")]
-        public async Task<IActionResult> PostAsync()
-            => Ok(await _pedidoHandler.HandleAsync(new CriarPedidoCommand()));
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] PedidoViewModel pedidoViewModel)
+            => Ok(await _pedidoHandler.HandleAsync(new CriarPedidoCommand(pedidoViewModel.Nome, pedidoViewModel.DataRegistro)));
 
         [SwaggerOperation(
         Summary = "Alteracão de Pedidos",
         Description = "Alteracão de pedidos",
         OperationId = "pedidos.Put",
         Tags = new[] { "PedidosEndpoints" })]
-        [HttpPost(Name = "Pedidos")]
-        public async Task<IActionResult> PutAsync()
-            => Ok(await _pedidoHandler.HandleAsync(new AlterarPedidoCommand()));
+        [HttpPut("{pedidoId:long}")]
+        public async Task<IActionResult> PutAsync([FromRoute] long pedidoId, [FromBody] PedidoViewModel pedidoViewModel)
+            => Ok(await _pedidoHandler.HandleAsync(new AlterarPedidoCommand(pedidoId, pedidoViewModel.Nome, pedidoViewModel.DataRegistro)));
+
+        [SwaggerOperation(
+        Summary = "Busca um pedido",
+        Description = "Busca de um pedido",
+        OperationId = "pedidos.Get",
+        Tags = new[] { "PedidosEndpoints" })]
+        [HttpGet("{pedidoId:long}")]
+        public async Task<IActionResult> GetAsync([FromRoute] long pedidoId)
+            => Ok(await _pedidoRepository.GetByIdAsync(pedidoId));
 
         [SwaggerOperation(
         Summary = "Lista de Pedidos",
         Description = "Lista de pedidos",
         OperationId = "pedidos.List",
         Tags = new[] { "PedidosEndpoints" })]
-        [HttpGet(Name = "Pedidos")]
-        public async Task<IActionResult> GetAsync([FromRoute] long pedidoId)
-            => Ok(await _pedidoRepository.GetAsync(pedidoId));        
-
-        [SwaggerOperation(
-       Summary = "Busca um pedido",
-       Description = "Busca de um pedido",
-       OperationId = "pedidos.Get",
-       Tags = new[] { "PedidosEndpoints" })]
-        [HttpGet(Name = "Pedidos")]
+        [HttpGet]
         public async Task<IActionResult> GetAsync()
-             => Ok(await _pedidoRepository.GetAllAsync());
+             => Ok(await _pedidoRepository.GetAsync());
     }
 }

@@ -11,7 +11,7 @@ namespace Projeto.Estudo.Core.Commands
     {
         public GenericCommandResult() { }
 
-        public GenericCommandResult(bool success, string? message, object data)
+        public GenericCommandResult(bool success, string? message = null, object? data = null)
         {
             Success = success;
             Message = message;
@@ -20,6 +20,6 @@ namespace Projeto.Estudo.Core.Commands
 
         public bool Success { get; set; }
         public string? Message { get; set; }
-        public object Data { get; set; }
+        public object? Data { get; set; }
     }
 }

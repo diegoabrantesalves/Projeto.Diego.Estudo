@@ -1,4 +1,6 @@
-﻿using Projeto.Estudo.Core.Entities;
+﻿using ClearSale.Estudo.Infra.Data.Contexts;
+using ClearSale.Estudo.Infra.Data.EntityFramework.Repository;
+using Projeto.Estudo.Core.Entities;
 using Projeto.Estudo.Core.Interfaces.Repository;
 using System;
 using System.Collections.Generic;
@@ -8,26 +10,13 @@ using System.Threading.Tasks;
 
 namespace ClearSale.Estudo.Infra.Data.Repository
 {
-    public class PedidoRepository : IPedidoRepository
+    public class PedidoRepository : GenericRepository<Pedido>, IPedidoRepository
     {
-        public Task<List<Pedido>> GetAllAsync()
+        public PedidoRepository(ApiContext context)
+            : base(context)
         {
-            throw new NotImplementedException();
+
         }
 
-        public Task<Pedido> GetAsync(long pedidoId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task PutAsync(Pedido pedido)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SaveAsync(Pedido pedido)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -1,7 +1,11 @@
-﻿using ClearSale.Estudo.Infra.Data.Repository;
+﻿using ClearSale.Estudo.Infra.Data.EntityFramework.UoW;
+using ClearSale.Estudo.Infra.Data.Repository;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using Projeto.Estudo.Core.Commands.Pedido;
 using Projeto.Estudo.Core.Handlers;
 using Projeto.Estudo.Core.Interfaces.Repository;
+using Projeto.Estudo.Core.Validations.Pedido;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +27,9 @@ namespace ClearSale.Estudo.Infra.CrossCutting.IoC
 
             #endregion
 
-
             #region Repository
-            services.AddSingleton<IPedidoRepository, PedidoRepository>();
+            services.AddScoped<IPedidoRepository, PedidoRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             #endregion
         }
     }

@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projeto.Estudo.UnitTests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearSale.Estudo.Infra.CrossCutting.IoC", "Projeto.Estudo.Infra.CrossCutting.IoC\ClearSale.Estudo.Infra.CrossCutting.IoC.csproj", "{5AFAA5FC-2F97-4120-9731-C192503D1C55}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearSale.Estudo.Infra.Data", "Projeto.Estudo.Infra.Data\ClearSale.Estudo.Infra.Data.csproj", "{01F3E9C0-AD81-4370-9368-8168946B3857}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearSale.Estudo.Infra.Data.EntityFramework", "Projeto.Estudo.Infra.Data\ClearSale.Estudo.Infra.Data.EntityFramework.csproj", "{01F3E9C0-AD81-4370-9368-8168946B3857}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

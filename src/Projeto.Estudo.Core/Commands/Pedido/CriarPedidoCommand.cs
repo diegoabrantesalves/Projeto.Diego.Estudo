@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projeto.Estudo.Core.Commands
+namespace Projeto.Estudo.Core.Commands.Pedido
 {
     public class CriarPedidoCommand : ICommand
     {
@@ -17,12 +17,7 @@ namespace Projeto.Estudo.Core.Commands
             Data = data;
         }
 
-        public string? Nome { get; set; }
+        public string Nome { get; set; }
         public DateTime Data { get; set; }
-
-        public void Validate()
-        {
-           
-        }
     }
 }

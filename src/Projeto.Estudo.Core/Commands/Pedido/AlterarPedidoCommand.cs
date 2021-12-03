@@ -5,24 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projeto.Estudo.Core.Commands
+namespace Projeto.Estudo.Core.Commands.Pedido
 {
     public class AlterarPedidoCommand : ICommand
     {
         public AlterarPedidoCommand() { }
 
-        public AlterarPedidoCommand(string nome, DateTime data)
+        public AlterarPedidoCommand(long id, string nome, DateTime data)
         {
+            Id = id;
             Nome = nome;
             Data = data;
         }
-
-        public string? Nome { get; set; }
+        public long Id { get; set; }
+        public string Nome { get; set; }
         public DateTime Data { get; set; }
-
-        public void Validate()
-        {
-          
-        }
     }
 }
