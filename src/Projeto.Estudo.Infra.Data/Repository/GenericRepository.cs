@@ -41,7 +41,7 @@ namespace ClearSale.Estudo.Infra.Data.EntityFramework.Repository
 
             if (orderBy != null)
             {
-                return  await orderBy(query).ToListAsync();
+                return await orderBy(query).ToListAsync();
             }
             else
             {
@@ -49,9 +49,12 @@ namespace ClearSale.Estudo.Infra.Data.EntityFramework.Repository
             }
         }
 
-        public async Task<TEntity> GetByIdAsync(object id) => await dbSet.FindAsync(id);
+        public async Task<TEntity?> GetByIdAsync(long id)
+        {
+            return await dbSet.FindAsync(id);
+        }
 
-        public async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
           => await dbSet.FirstOrDefaultAsync(predicate);
 
         public virtual async Task InsertAsync(TEntity entity)
@@ -59,11 +62,12 @@ namespace ClearSale.Estudo.Infra.Data.EntityFramework.Repository
             await dbSet.AddAsync(entity);
         }
 
-        public virtual async Task DeleteAsync(object id)
+        public virtual async Task DeleteAsync(long id)
         {
-            TEntity entityToDelete = await dbSet.FindAsync(id);
-            Delete(entityToDelete);
-        }        
+            TEntity? entityToDelete = await dbSet.FindAsync(id);
+            if (entityToDelete != null)
+                Delete(entityToDelete);
+        }
 
         public virtual void Delete(TEntity entityToDelete)
         {

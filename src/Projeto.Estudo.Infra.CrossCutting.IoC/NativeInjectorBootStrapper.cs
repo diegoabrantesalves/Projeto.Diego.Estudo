@@ -20,7 +20,7 @@ namespace ClearSale.Estudo.Infra.CrossCutting.IoC
         public static void RegisterServices(IServiceCollection services)
         {
             #region Handler
-            services.AddTransient<PedidoHandler>();
+            services.AddScoped<PedidoHandler>();
             #endregion
 
             #region Services

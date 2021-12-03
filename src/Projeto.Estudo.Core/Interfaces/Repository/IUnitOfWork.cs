@@ -8,6 +8,7 @@ namespace Projeto.Estudo.Core.Interfaces.Repository
 {
     public interface IUnitOfWork : IDisposable
     {
-        bool Commit();
+        Task<bool> CommitAsync();
+        Task DisposeAsync();
     }
 }

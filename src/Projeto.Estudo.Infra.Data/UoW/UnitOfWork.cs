@@ -17,14 +17,19 @@ namespace ClearSale.Estudo.Infra.Data.EntityFramework.UoW
             _context = context;
         }
 
-        public bool Commit()
+        public async Task<bool> CommitAsync()
         {
-            return _context.SaveChanges() > 0;
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public void Dispose()
         {
             _context.Dispose();
+        }
+
+        public async Task DisposeAsync()
+        {
+            await _context.DisposeAsync();
         }
     }
 }

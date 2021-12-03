@@ -14,8 +14,8 @@ namespace Projeto.Estudo.Core.Interfaces.Repository
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
             string includeProperties = "");
         Task InsertAsync(TEntity entity);
-        Task<TEntity> GetByIdAsync(object id);
+        Task<TEntity?> GetByIdAsync(long id);
         void Update(TEntity entityToUpdate);
-        Task DeleteAsync(object id);
+        Task DeleteAsync(long id);
     }
 }
