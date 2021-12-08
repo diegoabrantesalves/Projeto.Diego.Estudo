@@ -1,4 +1,5 @@
-﻿using Projeto.Estudo.Core.Commands.Contracts;
+﻿using FluentValidation.Results;
+using Projeto.Estudo.Core.Commands.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,20 @@ namespace Projeto.Estudo.Core.Commands
     {
         public GenericCommandResult() { }
 
-        public GenericCommandResult(bool success, string? message = null, object? data = null)
+        public GenericCommandResult(bool success, ValidationResult? validationResult = null)
         {
             Success = success;
-            Message = message;
+            ValidationResult = validationResult;
+        }
+
+        public GenericCommandResult(bool success, object data)
+        {
+            Success = success;
             Data = data;
         }
 
         public bool Success { get; set; }
-        public string? Message { get; set; }
+        public ValidationResult? ValidationResult { get; set; }
         public object? Data { get; set; }
     }
 }

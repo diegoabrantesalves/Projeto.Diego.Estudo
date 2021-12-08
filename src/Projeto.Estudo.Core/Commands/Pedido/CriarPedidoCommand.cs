@@ -19,5 +19,6 @@ namespace Projeto.Estudo.Core.Commands.Pedido
 
         public string Nome { get; set; }
         public DateTime Data { get; set; }
+
     }
 }

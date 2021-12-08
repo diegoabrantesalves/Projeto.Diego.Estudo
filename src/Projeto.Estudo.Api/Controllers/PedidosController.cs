@@ -9,7 +9,7 @@ using Projeto.Estudo.Core.Interfaces.Repository;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Projeto.Diego.Api.Controllers
-{   
+{
     public class PedidosController : BaseController
     {
         private readonly PedidoHandler _pedidoHandler;
@@ -28,7 +28,7 @@ namespace Projeto.Diego.Api.Controllers
         Tags = new[] { "PedidosEndpoints" })]
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] PedidoViewModel pedidoViewModel)
-            => Ok(await _pedidoHandler.HandleAsync(new CriarPedidoCommand(pedidoViewModel.Nome, pedidoViewModel.DataRegistro)));
+            => Response(await _pedidoHandler.HandleAsync(new CriarPedidoCommand(pedidoViewModel.Nome, pedidoViewModel.DataRegistro)));
 
         [SwaggerOperation(
         Summary = "Alteracão de Pedidos",
@@ -37,7 +37,7 @@ namespace Projeto.Diego.Api.Controllers
         Tags = new[] { "PedidosEndpoints" })]
         [HttpPut("{pedidoId:long}")]
         public async Task<IActionResult> PutAsync([FromRoute] long pedidoId, [FromBody] PedidoViewModel pedidoViewModel)
-            => Ok(await _pedidoHandler.HandleAsync(new AlterarPedidoCommand(pedidoId, pedidoViewModel.Nome, pedidoViewModel.DataRegistro)));
+            => Response(await _pedidoHandler.HandleAsync(new AlterarPedidoCommand(pedidoId, pedidoViewModel.Nome, pedidoViewModel.DataRegistro)));
 
         [SwaggerOperation(
         Summary = "Busca um pedido",
@@ -46,7 +46,16 @@ namespace Projeto.Diego.Api.Controllers
         Tags = new[] { "PedidosEndpoints" })]
         [HttpGet("{pedidoId:long}")]
         public async Task<IActionResult> GetAsync([FromRoute] long pedidoId)
-            => Ok(await _pedidoRepository.GetByIdAsync(pedidoId));
+            => Response(await _pedidoRepository.GetByIdAsync(pedidoId));
+
+        [SwaggerOperation(
+       Summary = "Deleta um pedido",
+       Description = "Deleta de um pedido",
+       OperationId = "pedidos.Delete",
+       Tags = new[] { "PedidosEndpoints" })]
+        [HttpDelete("{pedidoId:long}")]
+        public async Task<IActionResult> DeleteAsync([FromRoute] long pedidoId)
+           => Response(await _pedidoRepository.DeleteAsync(pedidoId));
 
         [SwaggerOperation(
         Summary = "Lista de Pedidos",
@@ -55,6 +64,6 @@ namespace Projeto.Diego.Api.Controllers
         Tags = new[] { "PedidosEndpoints" })]
         [HttpGet]
         public async Task<IActionResult> GetAsync()
-             => Ok(await _pedidoRepository.GetAsync());
+             => Response(await _pedidoRepository.GetAsync());
     }
 }

@@ -1,4 +1,5 @@
-﻿using Projeto.Estudo.Core.Commands.Contracts;
+﻿using Projeto.Estudo.Core.Commands;
+using Projeto.Estudo.Core.Commands.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

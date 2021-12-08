@@ -9,5 +9,6 @@ namespace Projeto.Estudo.Core.Services
 {
     public class PedidoService: IPedidoService
     {
+        
     }
 }

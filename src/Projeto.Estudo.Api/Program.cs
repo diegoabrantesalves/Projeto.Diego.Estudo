@@ -2,6 +2,7 @@ using ClearSale.Estudo.Infra.CrossCutting.IoC;
 using ClearSale.Estudo.Infra.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Projeto.Estudo.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,10 +31,12 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
-builder.Services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase("Teste"));
+builder.Services.AddDbContext<ApiContext>(opt => opt.UseInMemoryDatabase("Teste").UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 NativeInjectorBootStrapper.RegisterServices(builder.Services);
 
 var app = builder.Build();
+
+app.ConfigureExceptionHandler();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

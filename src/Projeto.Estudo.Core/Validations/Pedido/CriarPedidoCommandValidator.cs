@@ -9,19 +9,20 @@ using System.Threading.Tasks;
 
 namespace Projeto.Estudo.Core.Validations.Pedido
 {
-    public class CriarPedidoCommandValidation : AbstractValidator<CriarPedidoCommand>
+    public class CriarPedidoCommandValidator : AbstractValidator<CriarPedidoCommand>
     {
-        public CriarPedidoCommandValidation(IPedidoRepository pedidoRepository)
+        public CriarPedidoCommandValidator(IPedidoRepository pedidoRepository)
         {
             RuleFor(c => c.Nome)
-                .NotEmpty().WithMessage("Please ensure you have entered the Name")
-                .Length(2, 150).WithMessage("The Name must have between 2 and 150 characters")                
+                .NotEmpty().WithMessage("O nome não pode ficar em branco")
+                .Length(2, 150).WithMessage("O nome tem que estar entre 2 e 150 caracteres")                
                 .MustAsync(async (nome, cancellation) =>
                 {
                     var exists = await pedidoRepository.GetAsync(x => x.Nome == nome);
                     return !exists.Any();
                 })
-                .WithMessage("Nome deve ser unico");
+                .WithMessage("Nome do pedido deve ser único");
         }
+
     }
 }

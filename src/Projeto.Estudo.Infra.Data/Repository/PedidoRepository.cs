@@ -17,6 +17,5 @@ namespace ClearSale.Estudo.Infra.Data.Repository
         {
 
         }
-
     }
 }

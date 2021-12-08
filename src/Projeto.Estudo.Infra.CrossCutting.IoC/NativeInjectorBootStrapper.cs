@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Projeto.Estudo.Core.Commands.Pedido;
 using Projeto.Estudo.Core.Handlers;
 using Projeto.Estudo.Core.Interfaces.Repository;
+using Projeto.Estudo.Core.Services;
 using Projeto.Estudo.Core.Validations.Pedido;
 using System;
 using System.Collections.Generic;
@@ -23,8 +24,13 @@ namespace ClearSale.Estudo.Infra.CrossCutting.IoC
             services.AddScoped<PedidoHandler>();
             #endregion
 
-            #region Services
+            #region Validations
+            services.AddTransient<IValidator<CriarPedidoCommand>, CriarPedidoCommandValidator>();
+            services.AddTransient<IValidator<AlterarPedidoCommand>, AlterarPedidoCommandValidator>();
+            #endregion
 
+            #region Services
+            services.AddScoped<PedidoService, PedidoService>();
             #endregion
 
             #region Repository

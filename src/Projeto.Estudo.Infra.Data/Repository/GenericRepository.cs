@@ -57,32 +57,29 @@ namespace ClearSale.Estudo.Infra.Data.EntityFramework.Repository
         public async Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
           => await dbSet.FirstOrDefaultAsync(predicate);
 
-        public virtual async Task InsertAsync(TEntity entity)
+        public virtual async Task<TEntity> InsertAsync(TEntity entity)
         {
-            await dbSet.AddAsync(entity);
+            var retorno = await dbSet.AddAsync(entity);
+           return retorno.Entity;
         }
 
-        public virtual async Task DeleteAsync(long id)
+        public virtual async Task<TEntity?> DeleteAsync(long id)
         {
             TEntity? entityToDelete = await dbSet.FindAsync(id);
             if (entityToDelete != null)
-                Delete(entityToDelete);
-        }
-
-        public virtual void Delete(TEntity entityToDelete)
-        {
-            if (context.Entry(entityToDelete).State == EntityState.Detached)
             {
-                dbSet.Attach(entityToDelete);
+                dbSet.Remove(entityToDelete);
+                await context.SaveChangesAsync();
             }
-            dbSet.Remove(entityToDelete);
+
+            return entityToDelete;
         }
 
         public virtual void Update(TEntity entityToUpdate)
         {
-            dbSet.Attach(entityToUpdate);
-            context.Entry(entityToUpdate).State = EntityState.Modified;
+            dbSet.Update(entityToUpdate);            
         }
+
         public void Dispose()
         {
             context.Dispose();
