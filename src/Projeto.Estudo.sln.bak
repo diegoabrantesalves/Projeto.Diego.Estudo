@@ -39,6 +39,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearSale.Estudo.Infra.Cros
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearSale.Estudo.Infra.Data.EntityFramework", "Projeto.Estudo.Infra.Data\ClearSale.Estudo.Infra.Data.EntityFramework.csproj", "{01F3E9C0-AD81-4370-9368-8168946B3857}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AcceptanceTests", "AcceptanceTests", "{D7990A7C-EA6B-40C7-B2DF-6BCFF3A76BAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto.Estudo.SpecFlowTests", "Projeto.Estudo.SpecFlowTests\Projeto.Estudo.SpecFlowTests.csproj", "{A73BD131-F387-419E-BDC0-19772D0E1BD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +77,10 @@ Global
 		{01F3E9C0-AD81-4370-9368-8168946B3857}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01F3E9C0-AD81-4370-9368-8168946B3857}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01F3E9C0-AD81-4370-9368-8168946B3857}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A73BD131-F387-419E-BDC0-19772D0E1BD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A73BD131-F387-419E-BDC0-19772D0E1BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A73BD131-F387-419E-BDC0-19772D0E1BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A73BD131-F387-419E-BDC0-19772D0E1BD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +101,8 @@ Global
 		{4926C2DA-13EF-4673-943C-5367823C7DE6} = {F98468B6-5575-443E-A7E3-40B5428D77AD}
 		{5AFAA5FC-2F97-4120-9731-C192503D1C55} = {07F2AB4C-5FA7-4331-B4C7-B29BA7742257}
 		{01F3E9C0-AD81-4370-9368-8168946B3857} = {4444FBB1-C4BB-40FF-829F-D03368096184}
+		{D7990A7C-EA6B-40C7-B2DF-6BCFF3A76BAC} = {F9B4718A-BF78-4B30-9A72-1F1CE5302057}
+		{A73BD131-F387-419E-BDC0-19772D0E1BD2} = {D7990A7C-EA6B-40C7-B2DF-6BCFF3A76BAC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C1850A6-56C0-46CD-A4FC-FC087ABACD70}

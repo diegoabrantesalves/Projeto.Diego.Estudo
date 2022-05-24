@@ -70,8 +70,8 @@ namespace Projeto.Estudo.Core.Handlers
             catch (Exception ex)
             {
                 await _uow.DisposeAsync();
-                _logger.LogError(ex, $"Erro ao alterar o pedido {command.Id}");
-                throw new Exception($"Erro ao alterar o pedido {command.Id}, entre em contato com o suporte!");
+                _logger.LogError(ex, $"Erro ao alterar o pedido {command?.Id}");
+                throw new Exception($"Erro ao alterar o pedido {command?.Id}, entre em contato com o suporte!");
             }
         }
     }
